@@ -57,11 +57,15 @@ radius = 4.3333335
 height = 14.666667
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_024ki"]
-radius = 74.10803
+radius = 80.1561
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=591040418]
 scale = Vector2(3, 3)
 script = ExtResource("1_024ki")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1019538803]
+width = 0.5
+default_color = Color(1, 0.5058824, 0.32156864, 0.41568628)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1760066097]
 process_callback = 0
@@ -80,3 +84,5 @@ shape = SubResource("CapsuleShape2D_o5qli")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=33161905]
 shape = SubResource("CircleShape2D_024ki")
+
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
