@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bgxc2a5a1wasx" path="res://Scenes/main_character.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://broc15xssany7" path="res://Scenes/collectable.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://y03e131twigh" path="res://Scenes/jump_orb.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://q404rqbwhgp6" path="res://Scenes/SwingPoint.tscn" id="7_brh5y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("2_0xm2m")
@@ -602,3 +603,6 @@ position = Vector2(615, 457)
 
 [node name="Collectable" parent="." unique_id=860475565 instance=ExtResource("6_7mycd")]
 position = Vector2(426, 454)
+
+[node name="SwingPoint" parent="." unique_id=1773123261 groups=["SwingPoint"] instance=ExtResource("7_brh5y")]
+position = Vector2(358, 309)

@@ -8,6 +8,9 @@ var is_dashing: bool = false
 var dash_direction: float = 1.0
 var input_direction = Vector2.ZERO
 
+var nearestPoint = null
+@onready var line = get_node("Line2D")
+
 var max_jumps: int = 2
 var jump_count: int = 0
 
@@ -99,7 +102,14 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("dash"):
 		start_dash()
-
+		
+	if Input.is_action_pressed("swing"):
+		swing()
+	else:
+		get_nearest_point()
+		line.clear_points()
+	
+	
 	update_animation()
 	move_and_slide()
 
@@ -126,6 +136,31 @@ func charged_jump() -> void:
 func end_charged_jump() -> void:
 	is_charged_jump = false
 	
+func swing() -> void:
+	if nearestPoint == null: 
+		return
+	var diff = nearestPoint.global_position - global_position
+	velocity.x += diff.x * 2
+	velocity.y += diff.y / 1.5
+	line.clear_points()
+	line.add_point(Vector2.ZERO)
+	line.add_point(to_local(nearestPoint.global_position))
+	reset_jump()
+
+func get_nearest_point():
+	var min_distance = INF
+	var previousPoint = nearestPoint
+	for body in get_node("Area2D").get_overlapping_bodies():
+		if body.is_in_group("SwingPoint"):
+			var dist = global_position.distance_to(body.global_position)
+			if dist < min_distance:
+				min_distance = dist
+				nearestPoint = body
+	if nearestPoint:
+		nearestPoint.get_node("AnimatedSprite2D").play("active")
+	if previousPoint != nearestPoint and previousPoint:
+		previousPoint.get_node("AnimatedSprite2D").play("inactive")
+
 func update_animation():
 	var ani = get_node("AnimatedSprite2D")
 
@@ -142,3 +177,10 @@ func update_animation():
 	if not is_on_floor():
 		if ani.animation != "jump":
 			ani.play("jump")
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body == nearestPoint:
+		nearestPoint.get_node("AnimatedSprite2D").play("inactive")
+		nearestPoint = null
+		line.clear_points()
