@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://v2dtejovry7r" path="res://Assets/Fox/terrain/terrain_32x32.png" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://dd251md2pgawi" path="res://Assets/Pixel Adventure 1/Free/Terrain/Terrain (16x16).png" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bgxc2a5a1wasx" path="res://Scenes/main_character.tscn" id="4_1bvp3"]
-[ext_resource type="Script" uid="uid://xixlca2p1ls7" path="res://Scripts/main_character.gd" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://broc15xssany7" path="res://Scenes/collectable.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://y03e131twigh" path="res://Scenes/jump_orb.tscn" id="7_272bh"]
 
@@ -585,11 +584,18 @@ layer_0/tile_data = PackedInt32Array(851968, 65536, 8, 851969, 65536, 8, 851970,
 
 [node name="CharacterBody2D" parent="." unique_id=591040418 instance=ExtResource("4_1bvp3")]
 position = Vector2(425, 280.00003)
-script = ExtResource("5_lquwl")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=676889285]
+[node name="Camera2D2" type="Camera2D" parent="CharacterBody2D" unique_id=676889285]
 position = Vector2(25, 29)
 position_smoothing_enabled = true
+
+[node name="WallCheckRight" type="RayCast2D" parent="CharacterBody2D" unique_id=2043930694]
+rotation = -1.246165
+scale = Vector2(0.5, 0.5)
+target_position = Vector2(8.043884, 11.361084)
+
+[node name="WallCheckLeft" type="RayCast2D" parent="CharacterBody2D" unique_id=115645782]
+target_position = Vector2(-5, -4.0000076)
 
 [node name="JumpOrb" parent="." unique_id=1350389184 instance=ExtResource("7_272bh")]
 position = Vector2(615, 457)

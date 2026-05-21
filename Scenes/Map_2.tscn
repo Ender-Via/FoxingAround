@@ -585,9 +585,13 @@ layer_0/tile_data = PackedInt32Array(851968, 65536, 8, 851969, 65536, 8, 851970,
 [node name="CharacterBody2D" parent="." unique_id=591040418 instance=ExtResource("4_feky1")]
 position = Vector2(425, 280.00003)
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=676889285]
+[node name="Camera2D2" type="Camera2D" parent="CharacterBody2D" unique_id=676889285]
 position = Vector2(25, 29)
 position_smoothing_enabled = true
+
+[node name="WallCheckRight" type="RayCast2D" parent="CharacterBody2D" unique_id=1329953645]
+
+[node name="WallCheckLeft" type="RayCast2D" parent="CharacterBody2D" unique_id=2077151432]
 
 [node name="JumpOrb" parent="." unique_id=1350389184 instance=ExtResource("6_15aev")]
 position = Vector2(615, 457)
