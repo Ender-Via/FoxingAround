@@ -260,9 +260,6 @@ texture = ExtResource("3_ewfaq")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_n6t57")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5ki04"]
-radius = 48.270073
-
 [node name="TestMap_2" type="Node2D" unique_id=1941331832]
 script = ExtResource("1_looh7")
 
@@ -319,13 +316,3 @@ target_position = Vector2(7.819092, 6.5128784)
 [node name="WallCheckLeft" type="RayCast2D" parent="CharacterBody2D" unique_id=989872490]
 position = Vector2(3.3333335, 3.6666565)
 target_position = Vector2(-3.3333282, -3.3333435)
-
-[node name="Area2D" type="Area2D" parent="." unique_id=658021676]
-position = Vector2(2481, 303)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=285500523]
-position = Vector2(7, 4)
-shape = SubResource("CircleShape2D_5ki04")
-debug_color = Color(0.8331185, 0.18101677, 0.8443139, 0.41960785)
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
