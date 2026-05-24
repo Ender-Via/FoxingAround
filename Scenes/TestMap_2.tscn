@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://c4s16y42twefq"]
+[gd_scene format=3 uid="uid://c105np2sj12fv"]
 
 [ext_resource type="Texture2D" uid="uid://blb0242fwm1gx" path="res://Assets/Pixel Adventure 1/Free/Background/Brown.png" id="1_5ki04"]
+[ext_resource type="Script" uid="uid://cm42bjfphi32u" path="res://Scenes/test_map_2.gd" id="1_looh7"]
 [ext_resource type="PackedScene" uid="uid://bgxc2a5a1wasx" path="res://Scenes/main_character.tscn" id="2_looh7"]
 [ext_resource type="Texture2D" uid="uid://v2dtejovry7r" path="res://Assets/Fox/terrain/terrain_32x32.png" id="3_ewfaq"]
 [ext_resource type="PackedScene" uid="uid://q404rqbwhgp6" path="res://Scenes/SwingPoint.tscn" id="4_ciuiw"]
@@ -259,7 +260,11 @@ texture = ExtResource("3_ewfaq")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_n6t57")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ki04"]
+radius = 48.270073
+
 [node name="TestMap_2" type="Node2D" unique_id=1941331832]
+script = ExtResource("1_looh7")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=255176006]
 texture_filter = 1
@@ -272,9 +277,6 @@ size_flags_vertical = 0
 texture = ExtResource("1_5ki04")
 expand_mode = 1
 stretch_mode = 1
-
-[node name="CharacterBody2D" parent="." unique_id=591040418 instance=ExtResource("2_looh7")]
-position = Vector2(254, 410)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=352336292]
 tile_set = SubResource("TileSet_qg828")
@@ -301,3 +303,29 @@ position = Vector2(3328, 330)
 
 [node name="SwingPoint7" parent="." unique_id=136633082 groups=["SwingPoint"] instance=ExtResource("4_ciuiw")]
 position = Vector2(3330, 29)
+
+[node name="CharacterBody2D" parent="." unique_id=591040418 instance=ExtResource("2_looh7")]
+position = Vector2(254, 269)
+
+[node name="Camera2D2" type="Camera2D" parent="CharacterBody2D" unique_id=1150159588]
+position = Vector2(25, 29)
+position_smoothing_enabled = true
+
+[node name="WallCheckRight" type="RayCast2D" parent="CharacterBody2D" unique_id=1930820318]
+rotation = -1.246165
+scale = Vector2(0.5, 0.5)
+target_position = Vector2(7.819092, 6.5128784)
+
+[node name="WallCheckLeft" type="RayCast2D" parent="CharacterBody2D" unique_id=989872490]
+position = Vector2(3.3333335, 3.6666565)
+target_position = Vector2(-3.3333282, -3.3333435)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=658021676]
+position = Vector2(2481, 303)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=285500523]
+position = Vector2(7, 4)
+shape = SubResource("CircleShape2D_5ki04")
+debug_color = Color(0.8331185, 0.18101677, 0.8443139, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
