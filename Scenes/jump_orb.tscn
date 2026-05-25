@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ddyphrgw5eo64" path="res://Assets/Fox/Blue orb 16x16.png" id="1_ertmx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_boolh"]
-radius = 11.285473
+radius = 8.37094
 
 [node name="JumpOrb" type="Area2D" unique_id=1350389184]
 scale = Vector2(3.5937476, 3.21875)
