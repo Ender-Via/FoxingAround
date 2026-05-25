@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://ddyetqyxkhfn8"]
+
+[ext_resource type="Script" uid="uid://bstpggrrpuv1t" path="res://Scripts/main_menu.gd" id="1_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://chikj6te78dfr" path="res://Assets/Fox/37015797-5fff-48a5-af54-da2685a6d18a.png" id="1_28flt"]
+[ext_resource type="FontFile" uid="uid://wo11f4a031dn" path="res://Assets/Fox/GrapeSoda.ttf" id="2_48xlc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_48xlc"]
+texture = ExtResource("1_28flt")
+modulate_color = Color(0.36810192, 0.36810198, 0.36810192, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erv1k"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[node name="MainMenu" type="Control" unique_id=1582354212]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 260.0
+offset_top = 222.0
+offset_right = 260.0
+offset_bottom = 222.0
+script = ExtResource("1_1ehe0")
+
+[node name="Panel" type="Panel" parent="." unique_id=1259100393]
+layout_mode = 0
+offset_left = -266.0
+offset_top = -225.0
+offset_right = 903.0
+offset_bottom = 434.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_48xlc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=127495089]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 120.0
+offset_top = 129.0
+offset_right = 557.0
+offset_bottom = 301.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 9
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=521356549]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_erv1k")
+text = "Start game"
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=117167739]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_erv1k")
+text = "Exit"
+
+[node name="Label" type="Label" parent="." unique_id=1612181429]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 199.0
+offset_top = -83.0
+offset_right = 494.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("2_48xlc")
+theme_override_font_sizes/font_size = 101
+text = "Foxing Around"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_exit_pressed"]
