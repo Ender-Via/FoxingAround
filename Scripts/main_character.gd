@@ -29,6 +29,7 @@ var is_charging_jump: bool = false
 var is_charged_jump: bool = false
 
 var nearestPoint = null
+var is_swing:bool = false
 var input_direction = Vector2.ZERO
 
 var spawn_position: Vector2
@@ -68,6 +69,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("charge_jump") and is_charging_jump:
 		jump_charge_hold_time += delta
 	if Input.is_action_just_released("charge_jump") and is_charging_jump:
+		AudioManager.play_sfx("jump")
 		is_charging_jump = false
 		execute_charged_jump()
 		
@@ -107,11 +109,12 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 			jump_count += 1
 			is_wall_jumping = false
+			AudioManager.play_sfx("jump")
 		elif can_orb_jump:
 			velocity.y = JUMP_VELOCITY
 			can_orb_jump = false
 			is_wall_jumping = false
-			
+			AudioManager.play_sfx("jump")
 	if is_on_floor():
 		if direction:
 			velocity.x = direction * SPEED
@@ -137,11 +140,12 @@ func _physics_process(delta: float) -> void:
 		get_nearest_point()
 		if line:
 			line.clear_points()
+			is_swing = false
 	
-	update_animation()
 	move_and_slide()
 
 func start_dash() -> void:
+	AudioManager.play_sfx("dash")
 	is_dashing = true
 	can_dash = false
 	velocity.x = dash_direction * DASH_SPEED
@@ -169,6 +173,9 @@ func end_charged_jump() -> void:
 	is_charged_jump = false
 	
 func swing() -> void:
+	if not is_swing:
+		AudioManager.play_sfx("swing")
+		is_swing = true
 	if nearestPoint == null: 
 		return
 	var diff = nearestPoint.global_position - global_position
@@ -196,22 +203,6 @@ func get_nearest_point():
 		nearestPoint.get_node("AnimatedSprite2D").play("active")
 	if previousPoint != nearestPoint and previousPoint and previousPoint.has_node("AnimatedSprite2D"):
 		previousPoint.get_node("AnimatedSprite2D").play("inactive")
-
-func update_animation():
-	if not sprite_2d: return
-	if is_on_floor():
-		if input_direction.x != 0:
-			sprite_2d.play("run")
-		else:
-			sprite_2d.play("idle")
-	else:
-		if sprite_2d.animation != "jump":
-			sprite_2d.play("jump")
-
-	if input_direction.x > 0:
-		sprite_2d.flip_h = false
-	elif input_direction.x < 0:
-		sprite_2d.flip_h = true
 
 func die() -> void:
 	velocity = Vector2.ZERO
