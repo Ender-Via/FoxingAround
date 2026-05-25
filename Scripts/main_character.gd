@@ -102,6 +102,7 @@ func _physics_process(delta: float) -> void:
 			await get_tree().create_timer(0.1).timeout
 			wall_check_left.enabled = true
 			wall_check_right.enabled = true
+			AudioManager.play_sfx("jump")
 		elif is_on_floor() or jump_count < max_jumps:
 			velocity.y = JUMP_VELOCITY
 			jump_count += 1
@@ -223,5 +224,16 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		if nearestPoint.has_node("AnimatedSprite2D"):
 			nearestPoint.get_node("AnimatedSprite2D").play("inactive")
 		nearestPoint = null
-		if line:
-			line.clear_points()
+		line.clear_points()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Restart"):
+		get_tree().reload_current_scene()
+
+
+
+
+func _on_check_key_area_entered(area: Area2D) -> void:
+	if area.is_in_group("ChangeScene"):
+		SceneManager.call_deferred("change_scene", area.map)

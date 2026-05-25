@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://be06tsm5eose2"]
+
+[ext_resource type="Script" uid="uid://bik802rmuwip7" path="res://Scripts/key_to_scene.gd" id="1_c4s2n"]
+[ext_resource type="Texture2D" uid="uid://b5oflu8obwhn2" path="res://Assets/Fox/key/key_1.png" id="1_xod42"]
+[ext_resource type="Texture2D" uid="uid://blcj8nko00vba" path="res://Assets/Fox/key/key_2.png" id="2_c4s2n"]
+[ext_resource type="Texture2D" uid="uid://bk18si54q46r4" path="res://Assets/Fox/key/key_3.png" id="3_bqbru"]
+[ext_resource type="Texture2D" uid="uid://welwmst8eaa" path="res://Assets/Fox/key/key_4.png" id="4_awh0h"]
+[ext_resource type="Texture2D" uid="uid://bprdxnebqvatm" path="res://Assets/Fox/key/key_5.png" id="5_itfw1"]
+[ext_resource type="Texture2D" uid="uid://cbf5an2u8lm5x" path="res://Assets/Fox/key/key_6.png" id="6_87ing"]
+[ext_resource type="Texture2D" uid="uid://bmhpav1g65wvx" path="res://Assets/Fox/key/key_7.png" id="7_llnt1"]
+[ext_resource type="Texture2D" uid="uid://b1jqqls7olvk2" path="res://Assets/Fox/key/key_8.png" id="8_b21bj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qotgm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1y4vg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xod42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_c4s2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bqbru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_awh0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_itfw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_87ing")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_llnt1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_b21bj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="KeyToScene" type="Area2D" unique_id=568624518]
+script = ExtResource("1_c4s2n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=760473636]
+shape = SubResource("CapsuleShape2D_qotgm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1944626633]
+sprite_frames = SubResource("SpriteFrames_1y4vg")
+autoplay = "default"
+frame_progress = 0.61708105

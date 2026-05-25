@@ -1,14 +1,14 @@
 extends CanvasLayer
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+var scenes = {
+	"map1": "res://Scenes/Map_1.tscn",
+	"map2": "res://Scenes/Map_2.tscn",
+	"map3": "res://Scenes/Map_3.tscn"
+}
 
 func change_scene(target_scene_path: String):
+	if scenes.has(target_scene_path):
+		get_tree().change_scene_to_file(scenes.get(target_scene_path))
+		AudioManager.play_music(target_scene_path)
+		return
 	get_tree().change_scene_to_file(target_scene_path)

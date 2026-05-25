@@ -59,6 +59,10 @@ height = 14.666667
 [sub_resource type="CircleShape2D" id="CircleShape2D_024ki"]
 radius = 80.1561
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_024ki"]
+radius = 4.3333335
+height = 15.333334
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=591040418]
 scale = Vector2(3, 3)
 script = ExtResource("1_024ki")
@@ -85,4 +89,11 @@ shape = SubResource("CapsuleShape2D_o5qli")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=33161905]
 shape = SubResource("CircleShape2D_024ki")
 
+[node name="CheckKey" type="Area2D" parent="." unique_id=854983456]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckKey" unique_id=148722576]
+shape = SubResource("CapsuleShape2D_024ki")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="CheckKey" to="." method="_on_check_key_area_entered"]
