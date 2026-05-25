@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://y03e131twigh"]
+
+[ext_resource type="Script" uid="uid://c7k3djbsg88f6" path="res://Scripts/jump_orb.gd" id="1_boolh"]
+[ext_resource type="Texture2D" uid="uid://ddyphrgw5eo64" path="res://Assets/Fox/Blue orb 16x16.png" id="1_ertmx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_boolh"]
+radius = 8.37094
+
+[node name="JumpOrb" type="Area2D" unique_id=1350389184]
+scale = Vector2(3.5937476, 3.21875)
+script = ExtResource("1_boolh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=877948858]
+texture = ExtResource("1_ertmx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2117189793]
+position = Vector2(-1.6983706e-05, 0.31067958)
+shape = SubResource("CircleShape2D_boolh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

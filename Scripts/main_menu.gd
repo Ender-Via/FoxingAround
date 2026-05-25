@@ -3,6 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	AudioManager.play_music("intro")
 	pass # Replace with function body.
 
 
@@ -12,7 +13,7 @@ func _process(delta: float) -> void:
 
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Map_1.tscn")
+	SceneManager.change_scene("map1")
 
 
 func _on_exit_pressed() -> void:

@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bsfb723jv8ohi" path="res://Assets/Fox/foxy/fox/fox_walk_2.png" id="6_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://bj3ls24dmb1u0" path="res://Assets/Fox/foxy/fox/fox_walk_3.png" id="7_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://c7b68c2t2m054" path="res://Assets/Fox/foxy/fox/fox_walk_4.png" id="8_trceg"]
+[ext_resource type="Script" uid="uid://dpi301ufv8ha2" path="res://Scripts/State/StateManager.gd" id="10_5av31"]
+[ext_resource type="Script" uid="uid://c2j45the4y70g" path="res://Scripts/State/IdleState.gd" id="11_3vvc7"]
+[ext_resource type="Script" uid="uid://cpu2l5ckjjxoe" path="res://Scripts/State/RunState.gd" id="12_6ic4x"]
+[ext_resource type="Script" uid="uid://mgmwofnimhsd" path="res://Scripts/State/JumpState.gd" id="13_hajwg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0eyao"]
 animations = [{
@@ -94,6 +98,26 @@ shape = SubResource("CircleShape2D_024ki")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CheckKey" unique_id=148722576]
 shape = SubResource("CapsuleShape2D_024ki")
 
+[node name="State" type="Node" parent="." unique_id=753619083]
+script = ExtResource("10_5av31")
+
+[node name="Idle" type="Node" parent="State" unique_id=93383398]
+script = ExtResource("11_3vvc7")
+
+[node name="Run" type="Node" parent="State" unique_id=1237368507]
+script = ExtResource("12_6ic4x")
+
+[node name="Timer" type="Timer" parent="State/Run" unique_id=1356961583]
+wait_time = 0.05
+ignore_time_scale = true
+
+[node name="Jump" type="Node" parent="State" unique_id=734299048]
+script = ExtResource("13_hajwg")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="area_entered" from="CheckKey" to="." method="_on_check_key_area_entered"]
+[connection signal="transition_requested" from="State/Idle" to="State" method="_transition_requested"]
+[connection signal="transition_requested" from="State/Run" to="State" method="_transition_requested"]
+[connection signal="timeout" from="State/Run/Timer" to="State/Run" method="_on_timer_timeout"]
+[connection signal="transition_requested" from="State/Jump" to="State" method="_transition_requested"]
