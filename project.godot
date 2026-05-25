@@ -15,8 +15,13 @@ run/main_scene="uid://buaq673iyr04d"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://d3p6onew80nrs"
+
 [autoload]
 
+AudioManager="*uid://dov5jdjul1tv0"
 SceneManager="*uid://cqwhb8x5b4h07"
 
 [display]
@@ -27,6 +32,8 @@ window/stretch/aspect="expand"
 [global_group]
 
 SwingPoint=""
+Restart=""
+ChangeScene=""
 
 [input]
 

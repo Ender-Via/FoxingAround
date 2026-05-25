@@ -76,11 +76,12 @@ func _physics_process(delta: float) -> void:
 			await get_tree().create_timer(0.1).timeout
 			wall_check_left.enabled = true
 			wall_check_right.enabled = true
+			AudioManager.play_sfx("jump")
 		elif is_on_floor() or jump_count < max_jumps:
 			velocity.y = JUMP_VELOCITY
 			jump_count += 1
 			is_wall_jumping = false
-			
+			AudioManager.play_sfx("jump")
 			
 	if is_on_floor():
 		if direction:
@@ -101,6 +102,7 @@ func _physics_process(delta: float) -> void:
 	
 
 	if Input.is_action_just_pressed("dash"):
+		AudioManager.play_sfx("dash")
 		start_dash()
 		
 	if Input.is_action_pressed("swing"):
@@ -184,3 +186,15 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		nearestPoint.get_node("AnimatedSprite2D").play("inactive")
 		nearestPoint = null
 		line.clear_points()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Restart"):
+		get_tree().reload_current_scene()
+
+
+
+
+func _on_check_key_area_entered(area: Area2D) -> void:
+	if area.is_in_group("ChangeScene"):
+		SceneManager.call_deferred("change_scene", area.map)
