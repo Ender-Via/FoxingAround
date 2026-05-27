@@ -514,10 +514,10 @@ repeat_times = 7
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground12/ParallaxLayer/Parallax2D" unique_id=45925824]
 modulate = Color(0, 0, 0, 1)
 top_level = true
-offset_left = -71.0
-offset_top = -37.0
-offset_right = 1190.0
-offset_bottom = 726.0
+offset_left = -282.0
+offset_top = 726.0
+offset_right = -139.0
+offset_bottom = 847.0
 
 [node name="ParallaxBackground13" type="ParallaxBackground" parent="." unique_id=353404706]
 layer = 2
@@ -532,7 +532,7 @@ scroll_offset = Vector2(22, 5)
 repeat_times = 21
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground13/ParallaxLayer/Parallax2D" unique_id=1475727479]
-position = Vector2(4192, 328)
+position = Vector2(4174, 325.00006)
 scale = Vector2(84.90164, 11.9375)
 texture = SubResource("GradientTexture2D_gtimi")
 
