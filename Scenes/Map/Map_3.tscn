@@ -12,7 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://bpv43j0q88v7s" path="res://Assets/Pixel Adventure 1/Free/Traps/Spikes/Idle.png" id="11_03kxp"]
 [ext_resource type="Texture2D" uid="uid://b33rl350arflc" path="res://Assets/parallax-00.png" id="11_ua4c3"]
 [ext_resource type="Texture2D" uid="uid://cwedwrihvwij3" path="res://Assets/parallax-02.png" id="12_7qc60"]
-[ext_resource type="PackedScene" uid="uid://o38qh70q8dlc" path="res://Scenes/sharp_thorns.tscn" id="13_e7adg"]
+[ext_resource type="PackedScene" uid="uid://o38qh70q8dlc" path="res://Scenes/Object/sharp_thorns.tscn" id="13_e7adg"]
+[ext_resource type="PackedScene" uid="uid://be06tsm5eose2" path="res://Scenes/Object/KeyToScene.tscn" id="14_8ap2q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_paj7a"]
 texture = ExtResource("3_fu1pd")
@@ -1151,3 +1152,7 @@ scale = Vector2(0.2381025, 0.17258513)
 [node name="SharpThorns139" parent="." unique_id=1449749827 instance=ExtResource("13_e7adg")]
 position = Vector2(4098, 79)
 scale = Vector2(0.2381025, 0.17258513)
+
+[node name="KeyToScene" parent="." unique_id=568624518 instance=ExtResource("14_8ap2q")]
+position = Vector2(3581, 1050)
+map = "endscene"

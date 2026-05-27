@@ -1,9 +1,11 @@
 extends CanvasLayer
 
 var scenes = {
+	"mainmenu": "res://Scenes/main_menu.tscn",
 	"map1": "res://Scenes/Map/Map_1.tscn",
 	"map2": "res://Scenes/Map/Map_2.tscn",
-	"map3": "res://Scenes/Map/Map_3.tscn"
+	"map3": "res://Scenes/Map/Map_3.tscn",
+	"endscene": "res://Scenes/EndScene.tscn"
 }
 
 func change_scene(target_scene_path: String):
