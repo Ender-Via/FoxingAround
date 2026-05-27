@@ -34,6 +34,8 @@ var input_direction = Vector2.ZERO
 
 var spawn_position: Vector2
 
+var disableInput:bool = false
+
 @onready var sprite_2d = $AnimatedSprite2D
 @onready var line = $Line2D
 @onready var wall_check_left = $WallCheckLeft
@@ -59,6 +61,8 @@ func _ready() -> void:
 		enable_dash = true
 
 func _physics_process(delta: float) -> void:
+	if disableInput:
+		return
 	if is_charged_jump or is_dashing:
 		move_and_slide()
 		return
