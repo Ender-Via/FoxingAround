@@ -1,0 +1,215 @@
+extends CharacterBody2D
+
+# --- CÔNG TẮC SKILL ---
+@export var enable_jump: bool = true
+@export var enable_dash: bool = true
+@export var enable_swing: bool = true
+@export var enable_wall_jump: bool = true
+
+const SPEED = 200.0
+const JUMP_VELOCITY = -800.0
+var max_jumps: int = 2
+var jump_count: int = 0
+var can_orb_jump: bool = false
+
+const DASH_SPEED = 500.0
+const DASH_DURATION = 0.2
+const DASH_COOLDOWN = 0.5
+var is_dashing: bool = false
+var can_dash: bool = true
+var dash_direction: float = 1.0
+
+const WALL_SLIDE_SPEED = 0 
+const WALL_JUMP_VELOCITY = Vector2(400, -350)
+
+var jump_charge_hold_time: float = 0
+const CHARGED_JUMP_DURATION = 0.4
+var is_charging_jump: bool = false
+var is_charged_jump: bool = false
+
+var nearestPoint = null
+var is_swing:bool = false
+var input_direction = Vector2.ZERO
+
+var spawn_position: Vector2
+
+var disableInput:bool = false
+
+@onready var progress_bar = $ProgressBar
+@onready var sprite_2d = $AnimatedSprite2D
+@onready var line = $Line2D
+
+func _ready() -> void:
+	spawn_position = global_position
+	add_to_group("Player")
+	
+	# Tự động check Map để khóa/mở skill
+	var current_map_name = get_tree().current_scene.name
+	if current_map_name == "Map_1":
+		enable_jump = true
+		max_jumps = 1          # Khóa double jump
+		enable_swing = false   # Khóa đu dây
+		enable_wall_jump = false # Khóa leo tường
+		enable_dash = true     # Cho lướt
+	else:
+		enable_jump = true
+		max_jumps = 2 
+		enable_swing = true
+		enable_wall_jump = true
+		enable_dash = true
+	progress_bar.min_value = 0.0
+	progress_bar.max_value = 3.0 
+	progress_bar.value = 0.0
+	progress_bar.step = 0.01
+	progress_bar.hide()
+
+func _physics_process(delta: float) -> void:
+	if disableInput:
+		return
+	if is_charged_jump or is_dashing:
+		move_and_slide()
+		return
+		
+	if Input.is_action_just_pressed("charge_jump") and enable_jump and jump_count < 1:
+		is_charging_jump = true
+		jump_charge_hold_time = 0.0
+		progress_bar.show()
+	if Input.is_action_pressed("charge_jump") and is_charging_jump and jump_count < 1:
+		jump_charge_hold_time += delta
+		progress_bar.value = jump_charge_hold_time
+	if Input.is_action_just_released("charge_jump") and is_charging_jump:
+		AudioManager.play_sfx("jump")
+		is_charging_jump = false
+		progress_bar.value = 0.0 
+		progress_bar.hide() 
+		jump_count += 1 
+		execute_charged_jump()
+		
+	var direction := Input.get_axis("left", "right")
+	input_direction.x = direction
+	if direction != 0:
+		dash_direction = direction
+	
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	else: 
+		jump_count = 0
+		can_orb_jump = false
+		
+	if Input.is_action_just_pressed("jump") and enable_jump:
+		if is_on_floor() or jump_count < max_jumps:
+			velocity.y = JUMP_VELOCITY
+			jump_count += 1
+			AudioManager.play_sfx("jump")
+		elif can_orb_jump:
+			velocity.y = JUMP_VELOCITY
+			can_orb_jump = false
+			AudioManager.play_sfx("jump")
+	if is_on_floor():
+		if direction:
+			velocity.x = direction * SPEED
+		else: 
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+	else: 
+		if direction:
+			velocity.x = direction * SPEED
+		else: 
+			velocity.x = move_toward(velocity.x, 0, SPEED * delta * 4)
+
+	if Input.is_action_just_pressed("dash") and can_dash and enable_dash:
+		start_dash()
+		
+	if Input.is_action_pressed("swing") and enable_swing:
+		swing()
+	else:
+		get_nearest_point()
+		if line:
+			line.clear_points()
+			is_swing = false
+	
+	move_and_slide()
+
+func start_dash() -> void:
+	AudioManager.play_sfx("dash")
+	is_dashing = true
+	can_dash = false
+	velocity.x = dash_direction * DASH_SPEED
+	velocity.y = 0
+	await get_tree().create_timer(DASH_DURATION).timeout
+	end_dash()
+
+func end_dash() -> void:
+	is_dashing = false
+	velocity.x = 0
+	await get_tree().create_timer(DASH_COOLDOWN).timeout
+	can_dash = true
+
+func reset_jump() -> void:
+	jump_count = 0
+	can_orb_jump = true
+	
+func execute_charged_jump() -> void:
+	is_charged_jump = true
+	velocity.y = remap(min(jump_charge_hold_time, 3.0), 0.0, 3.0, JUMP_VELOCITY, JUMP_VELOCITY * 2.2)
+	await get_tree().create_timer(0.15).timeout
+	end_charged_jump()
+	
+func end_charged_jump() -> void:
+	is_charged_jump = false
+	
+func swing() -> void:
+	if not is_swing:
+		AudioManager.play_sfx("swing")
+		is_swing = true
+	if nearestPoint == null: 
+		return
+	var diff = nearestPoint.global_position - global_position
+	velocity.x += diff.x * 2
+	velocity.y += diff.y / 1.5
+	if line:
+		line.clear_points()
+		line.add_point(Vector2.ZERO)
+		line.add_point(to_local(nearestPoint.global_position))
+	reset_jump()
+
+func get_nearest_point():
+	var min_distance = INF
+	var previousPoint = nearestPoint
+	var area = get_node_or_null("Area2D")
+	if area:
+		for body in area.get_overlapping_bodies():
+			if body.is_in_group("SwingPoint"):
+				var dist = global_position.distance_to(body.global_position)
+				if dist < min_distance:
+					min_distance = dist
+					nearestPoint = body
+					
+	if nearestPoint and nearestPoint.has_node("AnimatedSprite2D"):
+		nearestPoint.get_node("AnimatedSprite2D").play("active")
+	if previousPoint != nearestPoint and previousPoint and previousPoint.has_node("AnimatedSprite2D"):
+		previousPoint.get_node("AnimatedSprite2D").play("inactive")
+
+func die() -> void:
+	velocity = Vector2.ZERO
+	is_dashing = false
+	can_dash = true
+	global_position = spawn_position
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body == nearestPoint:
+		if nearestPoint.has_node("AnimatedSprite2D"):
+			nearestPoint.get_node("AnimatedSprite2D").play("inactive")
+		nearestPoint = null
+		line.clear_points()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Restart"):
+		get_tree().reload_current_scene()
+
+
+
+
+func _on_check_key_area_entered(area: Area2D) -> void:
+	if area.is_in_group("ChangeScene"):
+		SceneManager.call_deferred("change_scene", area.map)

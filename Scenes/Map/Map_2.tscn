@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://c105np2sj12fv"]
 
-[ext_resource type="Texture2D" uid="uid://bqde0l4at7gv8" path="res://Assets/Fox/background/bg_image.png" id="1_apwmx"]
-[ext_resource type="Script" uid="uid://b3yhqjgco54h7" path="res://Scenes/Map/map_2.gd" id="1_lhq6y"]
-[ext_resource type="Texture2D" uid="uid://dekyi7oa4n0sg" path="res://Assets/Fox/background/water_reflect_big_01.png" id="2_lhq6y"]
-[ext_resource type="Texture2D" uid="uid://b6dilwf04d4be" path="res://Assets/Fox/background/water_reflect_big_02.png" id="3_h4gmy"]
-[ext_resource type="Texture2D" uid="uid://drl3x1wfs0vai" path="res://Assets/Fox/background/water_reflect_big_03.png" id="4_nct7v"]
-[ext_resource type="Texture2D" uid="uid://c5ur36rqix0vh" path="res://Assets/Fox/background/water_reflect_big_04.png" id="5_sswx7"]
-[ext_resource type="Texture2D" uid="uid://m5yds3bm8pou" path="res://Assets/Fox/background/big_clouds.png" id="6_l3pbg"]
-[ext_resource type="Texture2D" uid="uid://ci5tpl05cnmra" path="res://Assets/Fox/background/small_cloud_1.png" id="7_budki"]
-[ext_resource type="Texture2D" uid="uid://1t3pkyls8wyt" path="res://Assets/Fox/background/small_cloud_2.png" id="8_3scsn"]
-[ext_resource type="Texture2D" uid="uid://dcvs45slp2tv3" path="res://Assets/Fox/background/small_cloud_3.png" id="9_11g1d"]
+[ext_resource type="Texture2D" uid="uid://bqde0l4at7gv8" path="res://Assets/sprites/background/bg_image.png" id="1_apwmx"]
+[ext_resource type="Script" uid="uid://b3yhqjgco54h7" path="res://Scripts/Map/map_2.gd" id="1_lhq6y"]
+[ext_resource type="Texture2D" uid="uid://dekyi7oa4n0sg" path="res://Assets/sprites/background/water_reflect_big_01.png" id="2_lhq6y"]
+[ext_resource type="Texture2D" uid="uid://b6dilwf04d4be" path="res://Assets/sprites/background/water_reflect_big_02.png" id="3_h4gmy"]
+[ext_resource type="Texture2D" uid="uid://drl3x1wfs0vai" path="res://Assets/sprites/background/water_reflect_big_03.png" id="4_nct7v"]
+[ext_resource type="Texture2D" uid="uid://c5ur36rqix0vh" path="res://Assets/sprites/background/water_reflect_big_04.png" id="5_sswx7"]
+[ext_resource type="Texture2D" uid="uid://m5yds3bm8pou" path="res://Assets/sprites/background/big_clouds.png" id="6_l3pbg"]
+[ext_resource type="Texture2D" uid="uid://ci5tpl05cnmra" path="res://Assets/sprites/background/small_cloud_1.png" id="7_budki"]
+[ext_resource type="Texture2D" uid="uid://1t3pkyls8wyt" path="res://Assets/sprites/background/small_cloud_2.png" id="8_3scsn"]
+[ext_resource type="Texture2D" uid="uid://dcvs45slp2tv3" path="res://Assets/sprites/background/small_cloud_3.png" id="9_11g1d"]
 [ext_resource type="PackedScene" uid="uid://o38qh70q8dlc" path="res://Scenes/Object/sharp_thorns.tscn" id="10_t2jsr"]
 [ext_resource type="PackedScene" uid="uid://b81c6ftqaaqs0" path="res://Scenes/Object/Tree.tscn" id="11_ublbl"]
-[ext_resource type="PackedScene" uid="uid://bgxc2a5a1wasx" path="res://Scenes/main_character.tscn" id="12_ls0m4"]
-[ext_resource type="Texture2D" uid="uid://v2dtejovry7r" path="res://Assets/Fox/terrain/terrain_32x32.png" id="13_dgfgh"]
+[ext_resource type="PackedScene" uid="uid://bgxc2a5a1wasx" path="res://Scenes/MainCharacter/main_character.tscn" id="12_ls0m4"]
+[ext_resource type="Texture2D" uid="uid://v2dtejovry7r" path="res://Assets/sprites/environment/terrain/terrain_32x32.png" id="13_dgfgh"]
 [ext_resource type="PackedScene" uid="uid://q404rqbwhgp6" path="res://Scenes/Object/SwingPoint.tscn" id="14_yxe6e"]
 [ext_resource type="PackedScene" uid="uid://be06tsm5eose2" path="res://Scenes/Object/KeyToScene.tscn" id="15_o4tcd"]
 
@@ -472,19 +472,21 @@ position = Vector2(1450, 422)
 scale = Vector2(0.35999757, 0.35999757)
 
 [node name="Tree" parent="." unique_id=31692705 instance=ExtResource("11_ublbl")]
-position = Vector2(1268.0001, 167.00006)
+position = Vector2(1303, 145.00002)
 rotation = 1.9846789
+scale = Vector2(1.6686537, 1.6686537)
 
 [node name="Tree7" parent="." unique_id=246489007 instance=ExtResource("11_ublbl")]
 position = Vector2(1194.0001, 170)
 rotation = 4.652195
 
 [node name="Tree5" parent="." unique_id=430966174 instance=ExtResource("11_ublbl")]
-position = Vector2(632, 456)
+position = Vector2(655, 430.99997)
 rotation = 0.10994075
+scale = Vector2(2.3201249, 2.3201249)
 
 [node name="Tree6" parent="." unique_id=569329170 instance=ExtResource("11_ublbl")]
-position = Vector2(575, 489)
+position = Vector2(575, 471)
 
 [node name="Tree2" parent="." unique_id=335097127 instance=ExtResource("11_ublbl")]
 position = Vector2(1527, 391)
@@ -504,8 +506,9 @@ position = Vector2(2349, 655)
 rotation = 0.32632524
 
 [node name="Tree12" parent="." unique_id=743500156 instance=ExtResource("11_ublbl")]
-position = Vector2(1814.0001, 651.00006)
-rotation = -0.10388759
+position = Vector2(1805.9999, 577)
+rotation = 0.008446202
+scale = Vector2(4.2041364, 4.2041364)
 
 [node name="Tree3" parent="." unique_id=1739420973 instance=ExtResource("11_ublbl")]
 position = Vector2(2089, 661)
@@ -514,7 +517,8 @@ position = Vector2(2089, 661)
 position = Vector2(2089, 661)
 
 [node name="Tree13" parent="." unique_id=614188028 instance=ExtResource("11_ublbl")]
-position = Vector2(2567, 202)
+position = Vector2(2570.9998, 180)
+scale = Vector2(2.3552103, 2.3552103)
 
 [node name="Tree17" parent="." unique_id=212406556 instance=ExtResource("11_ublbl")]
 position = Vector2(2809, 267.00006)
@@ -525,11 +529,13 @@ position = Vector2(3103.9998, 674)
 rotation = 0.10468007
 
 [node name="Tree19" parent="." unique_id=1536911074 instance=ExtResource("11_ublbl")]
-position = Vector2(3477.9998, 84)
+position = Vector2(3498, 54.999985)
 rotation = -0.038995717
+scale = Vector2(2.4432237, 2.4432237)
 
 [node name="Tree14" parent="." unique_id=823752167 instance=ExtResource("11_ublbl")]
-position = Vector2(2755, 661)
+position = Vector2(2759, 626)
+scale = Vector2(2.727269, 2.727269)
 
 [node name="Tree15" parent="." unique_id=1391304187 instance=ExtResource("11_ublbl")]
 position = Vector2(2608, 762)
@@ -539,14 +545,6 @@ position = Vector2(1891, 753)
 
 [node name="CharacterBody2D" parent="." unique_id=591040418 instance=ExtResource("12_ls0m4")]
 position = Vector2(304, 304)
-
-[node name="WallCheckRight" type="RayCast2D" parent="CharacterBody2D" unique_id=36018340]
-rotation = -1.246165
-scale = Vector2(0.5, 0.5)
-target_position = Vector2(8.043884, 11.361084)
-
-[node name="WallCheckLeft" type="RayCast2D" parent="CharacterBody2D" unique_id=833154007]
-target_position = Vector2(-5, -4.0000076)
 
 [node name="ProgressBar" type="ProgressBar" parent="CharacterBody2D" unique_id=1035777551]
 visible = false

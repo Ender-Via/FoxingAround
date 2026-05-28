@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://broc15xssany7"]
 
-[ext_resource type="Script" uid="uid://c6x1ovfscpi7y" path="res://Scripts/collectable.gd" id="1_llfh3"]
-[ext_resource type="Texture2D" uid="uid://bw6t5drblo4yu" path="res://Assets/Pixel Adventure 1/Free/Items/Fruits/Strawberry.png" id="2_licok"]
+[ext_resource type="Script" uid="uid://c6x1ovfscpi7y" path="res://Scripts/Object/collectable.gd" id="1_llfh3"]
+[ext_resource type="Texture2D" path="res://Assets/Pixel Adventure 1/Free/Items/Fruits/Strawberry.png" id="2_licok"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_me652"]
 atlas = ExtResource("2_licok")

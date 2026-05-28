@@ -20,5 +20,8 @@ func _on_timer_timeout() -> void:
 	currentPlayer.can_dash = true
 	currentPlayer.global_position = currentPlayer.spawn_position
 	currentPlayer.disableInput = false
+	currentPlayer.is_charging_jump = false
+	currentPlayer.progress_bar.value = 0.0 
+	currentPlayer.progress_bar.hide() 
 	transition_requested.emit("Idle")
 	exit()

@@ -5,17 +5,18 @@ extends Node
 
 var musics = {
 	"mainmenu": preload("res://Assets/audio/music/intro.ogg"),
+	"tutorial": preload("res://Assets/audio/music/tutorial.ogg"),
 	"map1": preload("res://Assets/audio/music/music1.ogg"),
 	"map2": preload("res://Assets/audio/music/music2.ogg"),
 	"map3": preload("res://Assets/audio/music/music3.ogg"),
 	"endscene": preload("res://Assets/audio/music/endscene.ogg")
 }
 var sfx = {
-	"jump": preload("res://Assets/audio/sfx/player/jump.wav"),
-	"dash": preload("res://Assets/audio/sfx/player/dash.mp3"),
-	"run": preload("res://Assets/audio/sfx/player/run.mp3"),
-	"swing": preload("res://Assets/audio/sfx/player/swing.mp3"),
-	"hurt": preload("res://Assets/audio/sfx/player/hurt.wav")
+	"jump": preload("res://Assets/audio/sfx/jump.wav"),
+	"dash": preload("res://Assets/audio/sfx/dash.mp3"),
+	"run": preload("res://Assets/audio/sfx/run.mp3"),
+	"swing": preload("res://Assets/audio/sfx/swing.mp3"),
+	"hurt": preload("res://Assets/audio/sfx/hurt.wav")
 }
 
 func _ready() -> void:

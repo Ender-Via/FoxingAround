@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://be06tsm5eose2"]
 
-[ext_resource type="Script" uid="uid://bik802rmuwip7" path="res://Scripts/key_to_scene.gd" id="1_c4s2n"]
-[ext_resource type="Texture2D" uid="uid://b5oflu8obwhn2" path="res://Assets/Fox/key/key_1.png" id="1_xod42"]
-[ext_resource type="Texture2D" uid="uid://blcj8nko00vba" path="res://Assets/Fox/key/key_2.png" id="2_c4s2n"]
-[ext_resource type="Texture2D" uid="uid://bk18si54q46r4" path="res://Assets/Fox/key/key_3.png" id="3_bqbru"]
-[ext_resource type="Texture2D" uid="uid://welwmst8eaa" path="res://Assets/Fox/key/key_4.png" id="4_awh0h"]
-[ext_resource type="Texture2D" uid="uid://bprdxnebqvatm" path="res://Assets/Fox/key/key_5.png" id="5_itfw1"]
-[ext_resource type="Texture2D" uid="uid://cbf5an2u8lm5x" path="res://Assets/Fox/key/key_6.png" id="6_87ing"]
-[ext_resource type="Texture2D" uid="uid://bmhpav1g65wvx" path="res://Assets/Fox/key/key_7.png" id="7_llnt1"]
-[ext_resource type="Texture2D" uid="uid://b1jqqls7olvk2" path="res://Assets/Fox/key/key_8.png" id="8_b21bj"]
+[ext_resource type="Script" uid="uid://bik802rmuwip7" path="res://Scripts/Object/key_to_scene.gd" id="1_c4s2n"]
+[ext_resource type="Texture2D" uid="uid://b5oflu8obwhn2" path="res://Assets/sprites/items/key/key_1.png" id="1_xod42"]
+[ext_resource type="Texture2D" uid="uid://blcj8nko00vba" path="res://Assets/sprites/items/key/key_2.png" id="2_c4s2n"]
+[ext_resource type="Texture2D" uid="uid://bk18si54q46r4" path="res://Assets/sprites/items/key/key_3.png" id="3_bqbru"]
+[ext_resource type="Texture2D" uid="uid://welwmst8eaa" path="res://Assets/sprites/items/key/key_4.png" id="4_awh0h"]
+[ext_resource type="Texture2D" uid="uid://bprdxnebqvatm" path="res://Assets/sprites/items/key/key_5.png" id="5_itfw1"]
+[ext_resource type="Texture2D" uid="uid://cbf5an2u8lm5x" path="res://Assets/sprites/items/key/key_6.png" id="6_87ing"]
+[ext_resource type="Texture2D" uid="uid://bmhpav1g65wvx" path="res://Assets/sprites/items/key/key_7.png" id="7_llnt1"]
+[ext_resource type="Texture2D" uid="uid://b1jqqls7olvk2" path="res://Assets/sprites/items/key/key_8.png" id="8_b21bj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qotgm"]
 

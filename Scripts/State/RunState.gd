@@ -13,7 +13,7 @@ func process(delta: float, player:CharacterBody2D) -> void:
 		player.get_node("AnimatedSprite2D").flip_h = true
 	if direction == 0:
 		transition_requested.emit("Idle")
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") or not player.is_on_floor():
 		transition_requested.emit("Jump")
 
 func exit() -> void:

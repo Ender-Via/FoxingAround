@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bqymki4xamggg"]
 
-[ext_resource type="Script" uid="uid://0picq78xn6aa" path="res://Scenes/Map/tutorial.gd" id="1_ctuag"]
-[ext_resource type="Texture2D" uid="uid://v2dtejovry7r" path="res://Assets/Fox/terrain/terrain_32x32.png" id="1_qfp4y"]
-[ext_resource type="Texture2D" uid="uid://dd251md2pgawi" path="res://Assets/Pixel Adventure 1/Free/Terrain/Terrain (16x16).png" id="2_pdtx5"]
-[ext_resource type="PackedScene" uid="uid://bgxc2a5a1wasx" path="res://Scenes/main_character.tscn" id="3_pdtx5"]
+[ext_resource type="Script" uid="uid://0picq78xn6aa" path="res://Scripts/Map/tutorial.gd" id="1_ctuag"]
+[ext_resource type="Texture2D" uid="uid://v2dtejovry7r" path="res://Assets/sprites/environment/terrain/terrain_32x32.png" id="1_qfp4y"]
+[ext_resource type="PackedScene" uid="uid://bgxc2a5a1wasx" path="res://Scenes/MainCharacter/main_character.tscn" id="3_pdtx5"]
 [ext_resource type="PackedScene" uid="uid://y03e131twigh" path="res://Scenes/Object/jump_orb.tscn" id="4_osekb"]
 [ext_resource type="PackedScene" uid="uid://q404rqbwhgp6" path="res://Scenes/Object/SwingPoint.tscn" id="6_qx2rg"]
+[ext_resource type="PackedScene" uid="uid://be06tsm5eose2" path="res://Scenes/Object/KeyToScene.tscn" id="7_f7y0f"]
 
 [sub_resource type="Gradient" id="Gradient_qx2rg"]
 offsets = PackedFloat32Array(0.016826924, 0.97836536)
@@ -393,8 +393,11 @@ texture = ExtResource("1_qfp4y")
 33:9/0 = 0
 33:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qx2rg"]
+load_path = "res://.godot/imported/Terrain (16x16).png-f70fb8475c662cda35be343c09267a6b.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ctuag"]
-texture = ExtResource("2_pdtx5")
+texture = SubResource("CompressedTexture2D_qx2rg")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -629,7 +632,7 @@ offset_top = 581.0
 offset_right = 2843.0
 offset_bottom = 630.0
 theme_override_colors/font_color = Color(0, 1, 0.27058825, 1)
-text = "Hold J to charge your jump and jump higher"
+text = "Hold E to charge your jump and jump higher"
 
 [node name="Label5" type="Label" parent="." unique_id=570880215]
 offset_left = 3505.0
@@ -642,14 +645,6 @@ text = "Press W to swing"
 [node name="CharacterBody2D" parent="." unique_id=591040418 instance=ExtResource("3_pdtx5")]
 position = Vector2(-1194, 803)
 
-[node name="Camera2D2" type="Camera2D" parent="CharacterBody2D" unique_id=1148894479]
-position = Vector2(25, 29)
-position_smoothing_enabled = true
-
-[node name="WallCheckRight" type="RayCast2D" parent="CharacterBody2D" unique_id=273383941]
-
-[node name="WallCheckLeft" type="RayCast2D" parent="CharacterBody2D" unique_id=1048418161]
-
 [node name="ProgressBar" type="ProgressBar" parent="CharacterBody2D" unique_id=326356163]
 visible = false
 show_behind_parent = true
@@ -660,3 +655,7 @@ offset_bottom = -4.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_qx2rg")
 fill_mode = 3
 show_percentage = false
+
+[node name="KeyToScene" parent="." unique_id=568624518 instance=ExtResource("7_f7y0f")]
+position = Vector2(4602, -253)
+map = "map1"
