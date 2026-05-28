@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bpv43j0q88v7s" path="res://Assets/sprites/environment/Spikes/Idle.png" id="1_66ksp"]
 [ext_resource type="Script" uid="uid://bddir54g0vavm" path="res://Scripts/Object/sharp_thorns.gd" id="1_jffwk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jffwk"]
-size = Vector2(71, 62)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_sgj12"]
+points = PackedVector2Array(11.5, -25, 15.5, -25, 28.5, 24, -35.5, 24, -22.5, -25, -18.5, -25, -5.5, 24, -1.5, 24)
 
 [node name="SharpThorns" type="Area2D" unique_id=1539993001]
 script = ExtResource("1_jffwk")
@@ -16,6 +16,6 @@ texture = ExtResource("1_66ksp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2055890970]
 position = Vector2(27.5, -16)
-shape = SubResource("RectangleShape2D_jffwk")
+shape = SubResource("ConvexPolygonShape2D_sgj12")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

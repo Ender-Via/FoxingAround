@@ -6,9 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://o38qh70q8dlc" path="res://Scenes/Object/sharp_thorns.tscn" id="13_e7adg"]
 [ext_resource type="PackedScene" uid="uid://be06tsm5eose2" path="res://Scenes/Object/KeyToScene.tscn" id="14_8ap2q"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ap2q"]
-bg_color = Color(0.134783, 0.6679103, 0.7744172, 1)
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fikiw"]
 load_path = "res://.godot/imported/world_tileset.png-f8b17cc593f443d198f49f91b4f6b3e2.ctex"
 
@@ -410,21 +407,10 @@ sources/8 = SubResource("TileSetAtlasSource_ytfje")
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bei4n"]
 load_path = "res://.godot/imported/parallax-02.png-c484afb9bb200e3c9dad28dc9ad6a85e.ctex"
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ap2q"]
+bg_color = Color(0.134783, 0.6679103, 0.7744172, 1)
+
 [node name="Node2D" type="Node" unique_id=1865471490]
-
-[node name="CharacterBody2D" parent="." unique_id=591040418 instance=ExtResource("2_eyqh3")]
-position = Vector2(312, 355)
-
-[node name="ProgressBar" type="ProgressBar" parent="CharacterBody2D" unique_id=1177388370]
-visible = false
-show_behind_parent = true
-offset_left = -11.666667
-offset_top = -16.0
-offset_right = -7.666667
-offset_bottom = -4.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_8ap2q")
-fill_mode = 3
-show_percentage = false
 
 [node name="TileMap" type="TileMap" parent="." unique_id=329153239]
 tile_set = SubResource("TileSet_7qc60")
@@ -1012,3 +998,17 @@ scale = Vector2(0.2381025, 0.17258513)
 [node name="KeyToScene" parent="." unique_id=568624518 instance=ExtResource("14_8ap2q")]
 position = Vector2(3581, 1050)
 map = "endscene"
+
+[node name="CharacterBody2D" parent="." unique_id=591040418 instance=ExtResource("2_eyqh3")]
+position = Vector2(312, 355)
+
+[node name="ProgressBar" type="ProgressBar" parent="CharacterBody2D" unique_id=1177388370]
+visible = false
+show_behind_parent = true
+offset_left = -11.666667
+offset_top = -16.0
+offset_right = -7.666667
+offset_bottom = -4.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_8ap2q")
+fill_mode = 3
+show_percentage = false
