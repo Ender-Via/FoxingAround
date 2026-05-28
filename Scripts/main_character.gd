@@ -36,6 +36,7 @@ var spawn_position: Vector2
 
 var disableInput:bool = false
 
+@onready var progress_bar = $ProgressBar
 @onready var sprite_2d = $AnimatedSprite2D
 @onready var line = $Line2D
 @onready var wall_check_left = $WallCheckLeft
@@ -59,6 +60,11 @@ func _ready() -> void:
 		enable_swing = true
 		enable_wall_jump = true
 		enable_dash = true
+	progress_bar.min_value = 0.0
+	progress_bar.max_value = 3.0 
+	progress_bar.value = 0.0
+	progress_bar.step = 0.01
+	progress_bar.hide()
 
 func _physics_process(delta: float) -> void:
 	if disableInput:
@@ -67,14 +73,19 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 		
-	if Input.is_action_just_pressed("charge_jump") and enable_jump:
+	if Input.is_action_just_pressed("charge_jump") and enable_jump and jump_count < 1:
 		is_charging_jump = true
 		jump_charge_hold_time = 0.0
-	if Input.is_action_pressed("charge_jump") and is_charging_jump:
+		progress_bar.show()
+	if Input.is_action_pressed("charge_jump") and is_charging_jump and jump_count < 1:
 		jump_charge_hold_time += delta
+		progress_bar.value = jump_charge_hold_time
 	if Input.is_action_just_released("charge_jump") and is_charging_jump:
 		AudioManager.play_sfx("jump")
 		is_charging_jump = false
+		progress_bar.value = 0.0 
+		progress_bar.hide() 
+		jump_count += 1 
 		execute_charged_jump()
 		
 	var direction := Input.get_axis("left", "right")

@@ -15,6 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://o38qh70q8dlc" path="res://Scenes/Object/sharp_thorns.tscn" id="13_e7adg"]
 [ext_resource type="PackedScene" uid="uid://be06tsm5eose2" path="res://Scenes/Object/KeyToScene.tscn" id="14_8ap2q"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ap2q"]
+bg_color = Color(0.134783, 0.6679103, 0.7744172, 1)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_paj7a"]
 texture = ExtResource("3_fu1pd")
 0:0/0 = 0
@@ -569,6 +572,17 @@ target_position = Vector2(7.819092, 6.5128784)
 
 [node name="WallCheckLeft" type="RayCast2D" parent="CharacterBody2D" unique_id=115645782]
 target_position = Vector2(-3.3333282, -3.3333435)
+
+[node name="ProgressBar" type="ProgressBar" parent="CharacterBody2D" unique_id=1177388370]
+visible = false
+show_behind_parent = true
+offset_left = -11.666667
+offset_top = -16.0
+offset_right = -7.666667
+offset_bottom = -4.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_8ap2q")
+fill_mode = 3
+show_percentage = false
 
 [node name="TileMap" type="TileMap" parent="." unique_id=329153239]
 tile_set = SubResource("TileSet_7qc60")

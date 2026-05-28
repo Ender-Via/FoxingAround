@@ -567,14 +567,17 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_osekb")
 sources/1 = SubResource("TileSetAtlasSource_ctuag")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qx2rg"]
+bg_color = Color(0.134783, 0.6679103, 0.7744172, 1)
+
 [node name="Node2D" type="Node2D" unique_id=337560817]
 script = ExtResource("1_ctuag")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1068680489]
-offset_left = -2042.0
-offset_top = -3426.0
-offset_right = 5947.0
-offset_bottom = 1447.0
+offset_left = -1442.0
+offset_top = -3807.0
+offset_right = 9385.0
+offset_bottom = 1066.0
 texture = SubResource("GradientTexture1D_f7y0f")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1186892933]
@@ -595,17 +598,6 @@ position = Vector2(3728, -284)
 
 [node name="SwingPoint2" parent="." unique_id=1005256804 groups=["SwingPoint"] instance=ExtResource("6_qx2rg")]
 position = Vector2(4336, -267)
-
-[node name="CharacterBody2D" parent="." unique_id=591040418 instance=ExtResource("3_pdtx5")]
-position = Vector2(-1157, 663)
-
-[node name="Camera2D2" type="Camera2D" parent="CharacterBody2D" unique_id=1517952255]
-position = Vector2(25, 29)
-position_smoothing_enabled = true
-
-[node name="WallCheckRight" type="RayCast2D" parent="CharacterBody2D" unique_id=865637752]
-
-[node name="WallCheckLeft" type="RayCast2D" parent="CharacterBody2D" unique_id=365818066]
 
 [node name="Label" type="Label" parent="." unique_id=1051109677]
 offset_left = -1267.0
@@ -646,3 +638,25 @@ offset_right = 3976.0
 offset_bottom = -157.0
 theme_override_colors/font_color = Color(0, 1, 0.27058825, 1)
 text = "Press W to swing"
+
+[node name="CharacterBody2D" parent="." unique_id=591040418 instance=ExtResource("3_pdtx5")]
+position = Vector2(-1194, 803)
+
+[node name="Camera2D2" type="Camera2D" parent="CharacterBody2D" unique_id=1148894479]
+position = Vector2(25, 29)
+position_smoothing_enabled = true
+
+[node name="WallCheckRight" type="RayCast2D" parent="CharacterBody2D" unique_id=273383941]
+
+[node name="WallCheckLeft" type="RayCast2D" parent="CharacterBody2D" unique_id=1048418161]
+
+[node name="ProgressBar" type="ProgressBar" parent="CharacterBody2D" unique_id=326356163]
+visible = false
+show_behind_parent = true
+offset_left = -11.666667
+offset_top = -16.0
+offset_right = -7.666667
+offset_bottom = -4.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_qx2rg")
+fill_mode = 3
+show_percentage = false
